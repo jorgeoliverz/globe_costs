@@ -1,4 +1,4 @@
-# 🌍 Cost of Living Globe
+# 🌍 CLG · Cost of Living Globe
 
 Una herramienta visual para responder a una pregunta: **¿dónde puedo vivir mejor con mi dinero?**
 
