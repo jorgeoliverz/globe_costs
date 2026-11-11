@@ -91,8 +91,8 @@ El agente trabaja una fase cada vez y marca las casillas al cerrarla. Cada fase 
 **Objetivo:** encontrar países y ciudades escribiendo.
 
 **Tareas:**
-- [ ] Buscador de países y ciudades.
-- [ ] Al elegir un resultado, seleccionarlo y centrar el globo.
+- [x] Buscador de países y ciudades.
+- [x] Al elegir un resultado, seleccionarlo y centrar el globo.
 
 **Pruebas:**
 - Unitaria: la búsqueda filtra por nombre sin distinguir mayúsculas ni acentos.

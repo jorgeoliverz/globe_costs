@@ -176,3 +176,53 @@ body,
   font-size: 0.8rem;
   cursor: pointer;
 }
+
+.search {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+}
+
+.search input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid rgba(94, 234, 212, 0.35);
+  border-radius: 10px;
+  background: rgba(10, 18, 38, 0.88);
+  color: inherit;
+  font: inherit;
+  outline: none;
+}
+
+.search input:focus {
+  border-color: #5eead4;
+}
+
+.search ul {
+  margin: 4px 0 0;
+  padding: 4px;
+  list-style: none;
+  border: 1px solid rgba(94, 234, 212, 0.35);
+  border-radius: 10px;
+  background: rgba(10, 18, 38, 0.95);
+}
+
+.search li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.search li[aria-selected='true'] {
+  background: rgba(94, 234, 212, 0.18);
+}
+
+.search small {
+  opacity: 0.65;
+}

@@ -1,6 +1,7 @@
 import { expect, test, type Page } from '@playwright/test'
 
 type Clg = {
+  autoRotating: () => boolean
   focus: (lat: number, lng: number) => void
   screenCoords: (lat: number, lng: number) => { x: number; y: number }
 }
@@ -44,4 +45,17 @@ test('la X cierra el panel', async ({ page }) => {
   await expect(page.getByTestId('country-panel')).toBeVisible()
   await page.getByRole('button', { name: 'Cerrar panel' }).click()
   await expect(page.getByTestId('country-panel')).toHaveCount(0)
+})
+
+test('con un país seleccionado el globo no gira; al cerrar el panel vuelve a girar', async ({ page }) => {
+  await clickAt(page, 39.5, -2.5)
+  await expect(page.getByTestId('country-panel')).toBeVisible()
+  const rotating = () =>
+    page.evaluate(() => (window as unknown as { __clg: Clg }).__clg.autoRotating())
+
+  await page.waitForTimeout(2500) // más que la espera de reanudación (1,5 s)
+  expect(await rotating()).toBe(false)
+
+  await page.getByRole('button', { name: 'Cerrar panel' }).click()
+  await expect.poll(rotating, { timeout: 6000 }).toBe(true)
 })

@@ -5,7 +5,7 @@ import type { Country } from './types'
 
 const country = (iso: string, name: string): Country => ({
   properties: { NAME: name, ISO_A3: iso, ADM0_A3: iso },
-  geometry: {},
+  geometry: { type: 'Polygon', coordinates: [] },
 })
 const norm = (s: string | null) => (s ?? '').replace(/\s/g, ' ')
 const noop = () => {}

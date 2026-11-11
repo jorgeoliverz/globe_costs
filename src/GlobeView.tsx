@@ -3,7 +3,6 @@ import Globe, { type GlobeMethods } from 'react-globe.gl'
 import type { Country } from './types'
 import { allCities, type City } from './lib/cities'
 import { COSTS, costColor, costRange, findCost, totalCost } from './lib/cost'
-import { useCountries } from './useCountries'
 
 const { min, max } = costRange(COSTS)
 
@@ -16,14 +15,31 @@ const CITIES = allCities()
 
 const HOVER_COLOR = 'rgba(94, 234, 212, 0.65)'
 
+// Tras soltar el globo, espera a que acabe la inercia antes de volver a girar.
+const RESUME_DELAY_MS = 1500
+const FOCUS_ALTITUDE = 1.5
+const FOCUS_DURATION_MS = 1000
+
+type Controls = ReturnType<GlobeMethods['controls']>
+
+export interface FocusTarget {
+  lat: number
+  lng: number
+}
+
 interface Props {
+  countries: Country[]
   selected: Country | null
+  focusTarget: FocusTarget | null
   onSelect: (country: Country | null, city?: City | null) => void
 }
 
-export default function GlobeView({ selected, onSelect }: Props) {
+export default function GlobeView({ countries, selected, focusTarget, onSelect }: Props) {
   const globeRef = useRef<GlobeMethods | undefined>(undefined)
-  const { countries } = useCountries()
+  const controlsRef = useRef<Controls | null>(null)
+  const resumeTimer = useRef<number | undefined>(undefined)
+  const selectedRef = useRef(selected)
+  selectedRef.current = selected
   const countriesRef = useRef<Country[]>([])
   countriesRef.current = countries
   const [hovered, setHovered] = useState<Country | null>(null)
@@ -38,16 +54,47 @@ export default function GlobeView({ selected, onSelect }: Props) {
     return () => window.removeEventListener('resize', onResize)
   }, [])
 
-  // Rotación automática lenta; se detiene para siempre al primer gesto del usuario.
+  // Rotación automática lenta. Se para al tocar el globo y vuelve a girar al
+  // soltarlo, salvo que haya un país o ciudad seleccionado.
+  const scheduleResume = () => {
+    window.clearTimeout(resumeTimer.current)
+    resumeTimer.current = window.setTimeout(() => {
+      if (controlsRef.current && !selectedRef.current) controlsRef.current.autoRotate = true
+    }, RESUME_DELAY_MS)
+  }
+
+  useEffect(() => {
+    if (!controlsRef.current) return
+    if (selected) {
+      window.clearTimeout(resumeTimer.current)
+      controlsRef.current.autoRotate = false
+    } else {
+      scheduleResume()
+    }
+  }, [selected])
+
+  useEffect(() => () => window.clearTimeout(resumeTimer.current), [])
+
+  useEffect(() => {
+    if (!focusTarget) return
+    globeRef.current?.pointOfView(
+      { lat: focusTarget.lat, lng: focusTarget.lng, altitude: FOCUS_ALTITUDE },
+      FOCUS_DURATION_MS,
+    )
+  }, [focusTarget])
+
   const onGlobeReady = () => {
     const globe = globeRef.current
     if (!globe) return
     const controls = globe.controls()
+    controlsRef.current = controls
     controls.autoRotate = true
     controls.autoRotateSpeed = 0.6
     controls.addEventListener('start', () => {
+      window.clearTimeout(resumeTimer.current)
       controls.autoRotate = false
     })
+    controls.addEventListener('end', scheduleResume)
 
     // Ayuda solo para las pruebas e2e (no existe en producción).
     if (import.meta.env.DEV) {
