@@ -20,9 +20,9 @@ test('pasar el ratón por España muestra su nombre', async ({ page }) => {
   await page.goto('/')
   await page.waitForFunction(() => '__clg' in window)
 
-  await page.evaluate(() => (window as unknown as { __clg: Clg }).__clg.focus(40, -4))
+  await page.evaluate(() => (window as unknown as { __clg: Clg }).__clg.focus(39.5, -2.5))
   await page.waitForTimeout(500)
-  const pos = await page.evaluate(() => (window as unknown as { __clg: Clg }).__clg.screenCoords(40, -4))
+  const pos = await page.evaluate(() => (window as unknown as { __clg: Clg }).__clg.screenCoords(39.5, -2.5))
   await page.mouse.move(pos.x - 5, pos.y - 5)
   await page.mouse.move(pos.x, pos.y, { steps: 5 })
 

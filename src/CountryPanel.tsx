@@ -1,20 +1,18 @@
-import { useEffect } from 'react'
 import type { Country } from './types'
+import { citiesOf, type City } from './lib/cities'
 import { findCost, formatEuro, totalCost } from './lib/cost'
+import { useEscape } from './useEscape'
 
 interface Props {
   country: Country
   onClose: () => void
+  onSelectCity: (city: City) => void
 }
 
-export default function CountryPanel({ country, onClose }: Props) {
+export default function CountryPanel({ country, onClose, onSelectCity }: Props) {
   const cost = findCost(country.properties.ADM0_A3)
-
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose()
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [onClose])
+  const cities = citiesOf(country.properties.ADM0_A3)
+  useEscape(onClose)
 
   return (
     <aside className="panel" data-testid="country-panel" aria-label="Detalle del país">
@@ -35,6 +33,21 @@ export default function CountryPanel({ country, onClose }: Props) {
         </dl>
       ) : (
         <p>Sin datos para este país.</p>
+      )}
+      {cities.length > 0 && (
+        <>
+          <h3>Ciudades principales</h3>
+          <ul className="city-list">
+            {cities.map((city) => (
+              <li key={city.name}>
+                <button onClick={() => onSelectCity(city)}>
+                  <span>{city.name}</span>
+                  <span>{formatEuro(totalCost(city))}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </>
       )}
     </aside>
   )

@@ -14,6 +14,7 @@ async function clickAt(page: Page, lat: number, lng: number) {
   )
   await page.mouse.move(pos.x - 4, pos.y - 4)
   await page.mouse.move(pos.x, pos.y, { steps: 5 })
+  await page.waitForTimeout(300) // deja que el globo detecte el objeto bajo el cursor
   await page.mouse.click(pos.x, pos.y)
 }
 
@@ -23,7 +24,7 @@ test.beforeEach(async ({ page }) => {
 })
 
 test('clic en España abre el panel con 900 / 250 / 45 / 1.195 €', async ({ page }) => {
-  await clickAt(page, 40, -4)
+  await clickAt(page, 39.5, -2.5)
   const panel = page.getByTestId('country-panel')
   await expect(panel).toBeVisible()
   await expect(panel.getByRole('heading', { name: 'España' })).toBeVisible()
@@ -39,7 +40,7 @@ test('clic en un país sin datos (Rusia) muestra "Sin datos"', async ({ page }) 
 })
 
 test('la X cierra el panel', async ({ page }) => {
-  await clickAt(page, 40, -4)
+  await clickAt(page, 39.5, -2.5)
   await expect(page.getByTestId('country-panel')).toBeVisible()
   await page.getByRole('button', { name: 'Cerrar panel' }).click()
   await expect(page.getByTestId('country-panel')).toHaveCount(0)

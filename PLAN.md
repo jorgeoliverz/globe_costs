@@ -76,9 +76,9 @@ El agente trabaja una fase cada vez y marca las casillas al cerrarla. Cada fase 
 **Objetivo:** cada país incluye sus 5 ciudades más importantes.
 
 **Tareas:**
-- [ ] Ampliar el JSON con 5 ciudades por país (nombre, latitud, longitud e importes propios).
-- [ ] Mostrar las ciudades como puntos en el globo y como lista en el panel del país.
-- [ ] Clic en una ciudad abre su panel con sus importes.
+- [x] Ampliar el JSON con 5 ciudades por país (nombre, latitud, longitud e importes propios).
+- [x] Mostrar las ciudades como puntos en el globo y como lista en el panel del país.
+- [x] Clic en una ciudad abre su panel con sus importes.
 
 **Pruebas:**
 - Unitaria sobre los datos: cada país tiene exactamente 5 ciudades.

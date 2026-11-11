@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Globe, { type GlobeMethods } from 'react-globe.gl'
 import type { Country } from './types'
+import { allCities, type City } from './lib/cities'
 import { COSTS, costColor, costRange, findCost, totalCost } from './lib/cost'
 import { useCountries } from './useCountries'
 
@@ -11,11 +12,13 @@ function baseColor(country: Country): string {
   return costColor(cost ? totalCost(cost) : null, min, max)
 }
 
+const CITIES = allCities()
+
 const HOVER_COLOR = 'rgba(94, 234, 212, 0.65)'
 
 interface Props {
   selected: Country | null
-  onSelect: (country: Country | null) => void
+  onSelect: (country: Country | null, city?: City | null) => void
 }
 
 export default function GlobeView({ selected, onSelect }: Props) {
@@ -77,11 +80,23 @@ export default function GlobeView({ selected, onSelect }: Props) {
         polygonCapColor={capColor}
         polygonSideColor={() => 'rgba(0, 0, 0, 0)'}
         polygonStrokeColor={() => 'rgba(255, 255, 255, 0.35)'}
-        polygonAltitude={(d) => (d === hovered || d === selected ? 0.03 : 0.006)}
+        polygonAltitude={(d) => (d === hovered || d === selected ? 0.012 : 0.006)}
         polygonLabel={(d) => (d as Country).properties.NAME}
         onPolygonHover={(d) => setHovered((d as Country | null) ?? null)}
         onPolygonClick={(d) => onSelect(d as Country)}
         onGlobeClick={() => onSelect(null)}
+        pointsData={CITIES}
+        pointLat="lat"
+        pointLng="lng"
+        pointColor={(d) => costColor(totalCost(d as City), min, max)}
+        pointAltitude={0.025}
+        pointRadius={0.7}
+        pointLabel={(d) => (d as City).name}
+        onPointClick={(d) => {
+          const city = d as City
+          const country = countriesRef.current.find((c) => c.properties.ADM0_A3 === city.iso)
+          if (country) onSelect(country, city)
+        }}
       />
     </div>
   )

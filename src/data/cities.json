@@ -1,0 +1,247 @@
+{
+  "ESP": [
+    {"name": "Madrid", "lat": 40.42, "lng": -3.7, "rent": 1080, "food": 270, "transport": 50},
+    {"name": "Barcelona", "lat": 41.39, "lng": 2.17, "rent": 1125, "food": 275, "transport": 50},
+    {"name": "Valencia", "lat": 39.47, "lng": -0.38, "rent": 855, "food": 245, "transport": 45},
+    {"name": "Sevilla", "lat": 37.39, "lng": -5.98, "rent": 765, "food": 235, "transport": 40},
+    {"name": "Bilbao", "lat": 43.26, "lng": -2.93, "rent": 900, "food": 250, "transport": 45}
+  ],
+  "FRA": [
+    {"name": "París", "lat": 48.86, "lng": 2.35, "rent": 1420, "food": 365, "transport": 90},
+    {"name": "Marsella", "lat": 43.3, "lng": 5.37, "rent": 945, "food": 305, "transport": 70},
+    {"name": "Lyon", "lat": 45.76, "lng": 4.84, "rent": 1050, "food": 320, "transport": 75},
+    {"name": "Toulouse", "lat": 43.6, "lng": 1.44, "rent": 945, "food": 305, "transport": 70},
+    {"name": "Niza", "lat": 43.7, "lng": 7.27, "rent": 1155, "food": 335, "transport": 80}
+  ],
+  "DEU": [
+    {"name": "Berlín", "lat": 52.52, "lng": 13.4, "rent": 1155, "food": 305, "transport": 80},
+    {"name": "Múnich", "lat": 48.14, "lng": 11.58, "rent": 1430, "food": 335, "transport": 90},
+    {"name": "Hamburgo", "lat": 53.55, "lng": 9.99, "rent": 1155, "food": 305, "transport": 80},
+    {"name": "Fráncfort", "lat": 50.11, "lng": 8.68, "rent": 1265, "food": 320, "transport": 85},
+    {"name": "Colonia", "lat": 50.94, "lng": 6.96, "rent": 1045, "food": 295, "transport": 80}
+  ],
+  "ITA": [
+    {"name": "Roma", "lat": 41.9, "lng": 12.5, "rent": 1090, "food": 305, "transport": 55},
+    {"name": "Milán", "lat": 45.46, "lng": 9.19, "rent": 1235, "food": 325, "transport": 55},
+    {"name": "Nápoles", "lat": 40.85, "lng": 14.27, "rent": 760, "food": 265, "transport": 45},
+    {"name": "Turín", "lat": 45.07, "lng": 7.69, "rent": 855, "food": 280, "transport": 50},
+    {"name": "Florencia", "lat": 43.77, "lng": 11.26, "rent": 950, "food": 290, "transport": 50}
+  ],
+  "PRT": [
+    {"name": "Lisboa", "lat": 38.72, "lng": -9.14, "rent": 1040, "food": 260, "transport": 45},
+    {"name": "Oporto", "lat": 41.15, "lng": -8.61, "rent": 800, "food": 230, "transport": 40},
+    {"name": "Braga", "lat": 41.55, "lng": -8.42, "rent": 640, "food": 210, "transport": 35},
+    {"name": "Coímbra", "lat": 40.21, "lng": -8.43, "rent": 640, "food": 210, "transport": 35},
+    {"name": "Faro", "lat": 37.02, "lng": -7.93, "rent": 720, "food": 220, "transport": 40}
+  ],
+  "GBR": [
+    {"name": "Londres", "lat": 51.51, "lng": -0.13, "rent": 2250, "food": 410, "transport": 160},
+    {"name": "Mánchester", "lat": 53.48, "lng": -2.24, "rent": 1350, "food": 325, "transport": 125},
+    {"name": "Birmingham", "lat": 52.49, "lng": -1.89, "rent": 1275, "food": 320, "transport": 120},
+    {"name": "Edimburgo", "lat": 55.95, "lng": -3.19, "rent": 1500, "food": 340, "transport": 130},
+    {"name": "Glasgow", "lat": 55.86, "lng": -4.25, "rent": 1275, "food": 320, "transport": 120}
+  ],
+  "IRL": [
+    {"name": "Dublín", "lat": 53.35, "lng": -6.26, "rent": 2040, "food": 380, "transport": 120},
+    {"name": "Cork", "lat": 51.9, "lng": -8.47, "rent": 1445, "food": 330, "transport": 100},
+    {"name": "Limerick", "lat": 52.66, "lng": -8.63, "rent": 1275, "food": 315, "transport": 95},
+    {"name": "Galway", "lat": 53.27, "lng": -9.05, "rent": 1445, "food": 330, "transport": 100},
+    {"name": "Waterford", "lat": 52.26, "lng": -7.11, "rent": 1190, "food": 310, "transport": 95}
+  ],
+  "NLD": [
+    {"name": "Ámsterdam", "lat": 52.37, "lng": 4.9, "rent": 1875, "food": 365, "transport": 100},
+    {"name": "Róterdam", "lat": 51.92, "lng": 4.48, "rent": 1425, "food": 325, "transport": 90},
+    {"name": "La Haya", "lat": 52.08, "lng": 4.3, "rent": 1500, "food": 330, "transport": 90},
+    {"name": "Utrecht", "lat": 52.09, "lng": 5.12, "rent": 1500, "food": 330, "transport": 90},
+    {"name": "Eindhoven", "lat": 51.44, "lng": 5.47, "rent": 1275, "food": 310, "transport": 85}
+  ],
+  "CHE": [
+    {"name": "Zúrich", "lat": 47.38, "lng": 8.54, "rent": 2520, "food": 560, "transport": 95},
+    {"name": "Ginebra", "lat": 46.2, "lng": 6.14, "rent": 2520, "food": 560, "transport": 95},
+    {"name": "Basilea", "lat": 47.56, "lng": 7.59, "rent": 2100, "food": 520, "transport": 85},
+    {"name": "Berna", "lat": 46.95, "lng": 7.45, "rent": 1995, "food": 510, "transport": 85},
+    {"name": "Lausana", "lat": 46.52, "lng": 6.63, "rent": 2100, "food": 520, "transport": 85}
+  ],
+  "NOR": [
+    {"name": "Oslo", "lat": 59.91, "lng": 10.75, "rent": 1800, "food": 520, "transport": 100},
+    {"name": "Bergen", "lat": 60.39, "lng": 5.32, "rent": 1350, "food": 460, "transport": 85},
+    {"name": "Trondheim", "lat": 63.43, "lng": 10.4, "rent": 1275, "food": 450, "transport": 85},
+    {"name": "Stavanger", "lat": 58.97, "lng": 5.73, "rent": 1350, "food": 460, "transport": 85},
+    {"name": "Tromsø", "lat": 69.65, "lng": 18.96, "rent": 1200, "food": 440, "transport": 80}
+  ],
+  "SWE": [
+    {"name": "Estocolmo", "lat": 59.33, "lng": 18.07, "rent": 1500, "food": 365, "transport": 80},
+    {"name": "Gotemburgo", "lat": 57.71, "lng": 11.97, "rent": 1140, "food": 325, "transport": 70},
+    {"name": "Malmö", "lat": 55.6, "lng": 13.0, "rent": 1080, "food": 315, "transport": 65},
+    {"name": "Upsala", "lat": 59.86, "lng": 17.64, "rent": 1020, "food": 310, "transport": 65},
+    {"name": "Linköping", "lat": 58.41, "lng": 15.62, "rent": 900, "food": 295, "transport": 60}
+  ],
+  "POL": [
+    {"name": "Varsovia", "lat": 52.23, "lng": 21.01, "rent": 840, "food": 240, "transport": 35},
+    {"name": "Cracovia", "lat": 50.06, "lng": 19.94, "rent": 735, "food": 225, "transport": 30},
+    {"name": "Breslavia", "lat": 51.11, "lng": 17.04, "rent": 700, "food": 220, "transport": 30},
+    {"name": "Gdansk", "lat": 54.35, "lng": 18.65, "rent": 665, "food": 215, "transport": 30},
+    {"name": "Poznań", "lat": 52.41, "lng": 16.93, "rent": 595, "food": 205, "transport": 30}
+  ],
+  "GRC": [
+    {"name": "Atenas", "lat": 37.98, "lng": 23.73, "rent": 720, "food": 260, "transport": 40},
+    {"name": "Tesalónica", "lat": 40.64, "lng": 22.94, "rent": 540, "food": 230, "transport": 35},
+    {"name": "Patras", "lat": 38.25, "lng": 21.73, "rent": 420, "food": 210, "transport": 30},
+    {"name": "Heraclión", "lat": 35.34, "lng": 25.13, "rent": 480, "food": 220, "transport": 30},
+    {"name": "Rodas", "lat": 36.43, "lng": 28.22, "rent": 510, "food": 225, "transport": 30}
+  ],
+  "USA": [
+    {"name": "Nueva York", "lat": 40.71, "lng": -74.01, "rent": 3040, "food": 520, "transport": 130},
+    {"name": "Los Ángeles", "lat": 34.05, "lng": -118.24, "rent": 2470, "food": 470, "transport": 115},
+    {"name": "Chicago", "lat": 41.88, "lng": -87.63, "rent": 1900, "food": 420, "transport": 100},
+    {"name": "Houston", "lat": 29.76, "lng": -95.37, "rent": 1520, "food": 385, "transport": 90},
+    {"name": "Miami", "lat": 25.76, "lng": -80.19, "rent": 2280, "food": 455, "transport": 110}
+  ],
+  "CAN": [
+    {"name": "Toronto", "lat": 43.65, "lng": -79.38, "rent": 1800, "food": 410, "transport": 100},
+    {"name": "Vancouver", "lat": 49.28, "lng": -123.12, "rent": 1875, "food": 420, "transport": 100},
+    {"name": "Montreal", "lat": 45.5, "lng": -73.57, "rent": 1275, "food": 355, "transport": 85},
+    {"name": "Calgary", "lat": 51.05, "lng": -114.07, "rent": 1350, "food": 365, "transport": 85},
+    {"name": "Ottawa", "lat": 45.42, "lng": -75.7, "rent": 1425, "food": 370, "transport": 90}
+  ],
+  "MEX": [
+    {"name": "Ciudad de México", "lat": 19.43, "lng": -99.13, "rent": 715, "food": 225, "transport": 30},
+    {"name": "Guadalajara", "lat": 20.67, "lng": -103.35, "rent": 520, "food": 195, "transport": 25},
+    {"name": "Monterrey", "lat": 25.69, "lng": -100.32, "rent": 550, "food": 200, "transport": 25},
+    {"name": "Puebla", "lat": 19.04, "lng": -98.21, "rent": 410, "food": 180, "transport": 20},
+    {"name": "Cancún", "lat": 21.16, "lng": -86.85, "rent": 550, "food": 200, "transport": 25}
+  ],
+  "COL": [
+    {"name": "Bogotá", "lat": 4.71, "lng": -74.07, "rent": 480, "food": 195, "transport": 35},
+    {"name": "Medellín", "lat": 6.24, "lng": -75.58, "rent": 440, "food": 185, "transport": 30},
+    {"name": "Cali", "lat": 3.45, "lng": -76.53, "rent": 340, "food": 170, "transport": 30},
+    {"name": "Barranquilla", "lat": 10.96, "lng": -74.8, "rent": 320, "food": 165, "transport": 25},
+    {"name": "Cartagena", "lat": 10.39, "lng": -75.51, "rent": 380, "food": 175, "transport": 30}
+  ],
+  "ARG": [
+    {"name": "Buenos Aires", "lat": -34.6, "lng": -58.38, "rent": 560, "food": 240, "transport": 20},
+    {"name": "Córdoba", "lat": -31.42, "lng": -64.18, "rent": 380, "food": 205, "transport": 20},
+    {"name": "Rosario", "lat": -32.95, "lng": -60.64, "rent": 360, "food": 200, "transport": 20},
+    {"name": "Mendoza", "lat": -32.89, "lng": -68.84, "rent": 380, "food": 205, "transport": 20},
+    {"name": "Salta", "lat": -24.78, "lng": -65.41, "rent": 315, "food": 195, "transport": 15}
+  ],
+  "BRA": [
+    {"name": "São Paulo", "lat": -23.55, "lng": -46.63, "rent": 600, "food": 230, "transport": 40},
+    {"name": "Río de Janeiro", "lat": -22.91, "lng": -43.17, "rent": 550, "food": 225, "transport": 40},
+    {"name": "Brasilia", "lat": -15.79, "lng": -47.88, "rent": 530, "food": 220, "transport": 35},
+    {"name": "Salvador", "lat": -12.97, "lng": -38.5, "rent": 385, "food": 195, "transport": 30},
+    {"name": "Curitiba", "lat": -25.43, "lng": -49.27, "rent": 430, "food": 200, "transport": 35}
+  ],
+  "CHL": [
+    {"name": "Santiago", "lat": -33.45, "lng": -70.67, "rent": 720, "food": 270, "transport": 50},
+    {"name": "Valparaíso", "lat": -33.05, "lng": -71.62, "rent": 540, "food": 240, "transport": 45},
+    {"name": "Concepción", "lat": -36.83, "lng": -73.05, "rent": 480, "food": 230, "transport": 40},
+    {"name": "Antofagasta", "lat": -23.65, "lng": -70.4, "rent": 540, "food": 240, "transport": 45},
+    {"name": "Temuco", "lat": -38.74, "lng": -72.6, "rent": 420, "food": 220, "transport": 40}
+  ],
+  "PER": [
+    {"name": "Lima", "lat": -12.05, "lng": -77.04, "rent": 525, "food": 210, "transport": 30},
+    {"name": "Arequipa", "lat": -16.41, "lng": -71.54, "rent": 355, "food": 180, "transport": 25},
+    {"name": "Cusco", "lat": -13.53, "lng": -71.97, "rent": 355, "food": 180, "transport": 25},
+    {"name": "Trujillo", "lat": -8.11, "lng": -79.03, "rent": 315, "food": 170, "transport": 20},
+    {"name": "Piura", "lat": -5.19, "lng": -80.63, "rent": 295, "food": 165, "transport": 20}
+  ],
+  "JPN": [
+    {"name": "Tokio", "lat": 35.68, "lng": 139.69, "rent": 1050, "food": 325, "transport": 95},
+    {"name": "Osaka", "lat": 34.69, "lng": 135.5, "rent": 750, "food": 280, "transport": 80},
+    {"name": "Nagoya", "lat": 35.18, "lng": 136.91, "rent": 675, "food": 270, "transport": 75},
+    {"name": "Sapporo", "lat": 43.06, "lng": 141.35, "rent": 600, "food": 260, "transport": 70},
+    {"name": "Fukuoka", "lat": 33.59, "lng": 130.4, "rent": 640, "food": 265, "transport": 75}
+  ],
+  "KOR": [
+    {"name": "Seúl", "lat": 37.57, "lng": 126.98, "rent": 1040, "food": 335, "transport": 55},
+    {"name": "Busan", "lat": 35.18, "lng": 129.08, "rent": 720, "food": 290, "transport": 50},
+    {"name": "Incheon", "lat": 37.46, "lng": 126.71, "rent": 760, "food": 295, "transport": 50},
+    {"name": "Daegu", "lat": 35.87, "lng": 128.6, "rent": 640, "food": 275, "transport": 45},
+    {"name": "Daejeon", "lat": 36.35, "lng": 127.38, "rent": 640, "food": 275, "transport": 45}
+  ],
+  "CHN": [
+    {"name": "Pekín", "lat": 39.9, "lng": 116.41, "rent": 910, "food": 265, "transport": 40},
+    {"name": "Shanghái", "lat": 31.23, "lng": 121.47, "rent": 975, "food": 275, "transport": 45},
+    {"name": "Cantón", "lat": 23.13, "lng": 113.26, "rent": 650, "food": 230, "transport": 35},
+    {"name": "Shenzhen", "lat": 22.54, "lng": 114.06, "rent": 845, "food": 260, "transport": 40},
+    {"name": "Chengdu", "lat": 30.57, "lng": 104.07, "rent": 520, "food": 210, "transport": 30}
+  ],
+  "IND": [
+    {"name": "Bombay", "lat": 19.08, "lng": 72.88, "rent": 375, "food": 155, "transport": 20},
+    {"name": "Nueva Delhi", "lat": 28.61, "lng": 77.21, "rent": 300, "food": 140, "transport": 15},
+    {"name": "Bangalore", "lat": 12.97, "lng": 77.59, "rent": 300, "food": 140, "transport": 15},
+    {"name": "Calcuta", "lat": 22.57, "lng": 88.36, "rent": 200, "food": 120, "transport": 15},
+    {"name": "Chennai", "lat": 13.08, "lng": 80.27, "rent": 225, "food": 125, "transport": 15}
+  ],
+  "THA": [
+    {"name": "Bangkok", "lat": 13.76, "lng": 100.5, "rent": 455, "food": 200, "transport": 40},
+    {"name": "Chiang Mai", "lat": 18.79, "lng": 98.98, "rent": 300, "food": 170, "transport": 30},
+    {"name": "Phuket", "lat": 7.88, "lng": 98.39, "rent": 420, "food": 195, "transport": 40},
+    {"name": "Pattaya", "lat": 12.93, "lng": 100.88, "rent": 350, "food": 180, "transport": 35},
+    {"name": "Khon Kaen", "lat": 16.44, "lng": 102.84, "rent": 230, "food": 155, "transport": 30}
+  ],
+  "VNM": [
+    {"name": "Hanói", "lat": 21.03, "lng": 105.85, "rent": 330, "food": 165, "transport": 20},
+    {"name": "Ciudad Ho Chi Minh", "lat": 10.82, "lng": 106.63, "rent": 375, "food": 175, "transport": 20},
+    {"name": "Da Nang", "lat": 16.05, "lng": 108.21, "rent": 285, "food": 155, "transport": 20},
+    {"name": "Haiphong", "lat": 20.84, "lng": 106.69, "rent": 240, "food": 145, "transport": 20},
+    {"name": "Hue", "lat": 16.46, "lng": 107.59, "rent": 210, "food": 140, "transport": 15}
+  ],
+  "IDN": [
+    {"name": "Yakarta", "lat": -6.21, "lng": 106.85, "rent": 450, "food": 175, "transport": 30},
+    {"name": "Surabaya", "lat": -7.25, "lng": 112.75, "rent": 290, "food": 145, "transport": 25},
+    {"name": "Bandung", "lat": -6.92, "lng": 107.61, "rent": 270, "food": 140, "transport": 25},
+    {"name": "Denpasar", "lat": -8.65, "lng": 115.22, "rent": 385, "food": 160, "transport": 30},
+    {"name": "Medan", "lat": 3.59, "lng": 98.67, "rent": 255, "food": 140, "transport": 20}
+  ],
+  "PHL": [
+    {"name": "Manila", "lat": 14.6, "lng": 120.98, "rent": 430, "food": 190, "transport": 30},
+    {"name": "Cebú", "lat": 10.32, "lng": 123.89, "rent": 315, "food": 165, "transport": 25},
+    {"name": "Davao", "lat": 7.19, "lng": 125.46, "rent": 265, "food": 155, "transport": 20},
+    {"name": "Quezon", "lat": 14.68, "lng": 121.04, "rent": 330, "food": 170, "transport": 25},
+    {"name": "Cagayán de Oro", "lat": 8.48, "lng": 124.65, "rent": 250, "food": 155, "transport": 20}
+  ],
+  "AUS": [
+    {"name": "Sídney", "lat": -33.87, "lng": 151.21, "rent": 2080, "food": 450, "transport": 125},
+    {"name": "Melbourne", "lat": -37.81, "lng": 144.96, "rent": 1760, "food": 415, "transport": 115},
+    {"name": "Brisbane", "lat": -27.47, "lng": 153.03, "rent": 1600, "food": 400, "transport": 110},
+    {"name": "Perth", "lat": -31.95, "lng": 115.86, "rent": 1520, "food": 390, "transport": 105},
+    {"name": "Adelaida", "lat": -34.93, "lng": 138.6, "rent": 1360, "food": 375, "transport": 100}
+  ],
+  "NZL": [
+    {"name": "Auckland", "lat": -36.85, "lng": 174.76, "rent": 1560, "food": 410, "transport": 105},
+    {"name": "Wellington", "lat": -41.29, "lng": 174.78, "rent": 1430, "food": 395, "transport": 100},
+    {"name": "Christchurch", "lat": -43.53, "lng": 172.64, "rent": 1170, "food": 365, "transport": 90},
+    {"name": "Hamilton", "lat": -37.79, "lng": 175.28, "rent": 1040, "food": 350, "transport": 85},
+    {"name": "Dunedin", "lat": -45.87, "lng": 170.5, "rent": 1040, "food": 350, "transport": 85}
+  ],
+  "MAR": [
+    {"name": "Casablanca", "lat": 33.57, "lng": -7.59, "rent": 455, "food": 185, "transport": 20},
+    {"name": "Rabat", "lat": 34.02, "lng": -6.84, "rent": 420, "food": 175, "transport": 20},
+    {"name": "Marrakech", "lat": 31.63, "lng": -8.01, "rent": 380, "food": 170, "transport": 20},
+    {"name": "Fez", "lat": 34.03, "lng": -5.0, "rent": 305, "food": 155, "transport": 20},
+    {"name": "Tánger", "lat": 35.76, "lng": -5.8, "rent": 360, "food": 165, "transport": 20}
+  ],
+  "EGY": [
+    {"name": "El Cairo", "lat": 30.04, "lng": 31.24, "rent": 265, "food": 130, "transport": 15},
+    {"name": "Alejandría", "lat": 31.2, "lng": 29.92, "rent": 200, "food": 115, "transport": 10},
+    {"name": "Guiza", "lat": 30.01, "lng": 31.21, "rent": 210, "food": 120, "transport": 10},
+    {"name": "Luxor", "lat": 25.69, "lng": 32.64, "rent": 155, "food": 105, "transport": 10},
+    {"name": "Asuán", "lat": 24.09, "lng": 32.9, "rent": 145, "food": 105, "transport": 10}
+  ],
+  "ZAF": [
+    {"name": "Johannesburgo", "lat": -26.2, "lng": 28.05, "rent": 550, "food": 210, "transport": 40},
+    {"name": "Ciudad del Cabo", "lat": -33.92, "lng": 18.42, "rent": 600, "food": 215, "transport": 45},
+    {"name": "Durban", "lat": -29.86, "lng": 31.02, "rent": 450, "food": 190, "transport": 40},
+    {"name": "Pretoria", "lat": -25.75, "lng": 28.19, "rent": 475, "food": 195, "transport": 40},
+    {"name": "Port Elizabeth", "lat": -33.96, "lng": 25.6, "rent": 375, "food": 180, "transport": 35}
+  ],
+  "TUR": [
+    {"name": "Estambul", "lat": 41.01, "lng": 28.98, "rent": 585, "food": 215, "transport": 30},
+    {"name": "Ankara", "lat": 39.93, "lng": 32.86, "rent": 380, "food": 180, "transport": 25},
+    {"name": "Esmirna", "lat": 38.42, "lng": 27.14, "rent": 450, "food": 190, "transport": 25},
+    {"name": "Antalya", "lat": 36.9, "lng": 30.71, "rent": 430, "food": 185, "transport": 25},
+    {"name": "Bursa", "lat": 40.19, "lng": 29.06, "rent": 360, "food": 175, "transport": 20}
+  ]
+}
