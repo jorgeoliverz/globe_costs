@@ -35,8 +35,8 @@ Cómo se arrancará: `npm install` y `npm run dev` (se abre en localhost). Prueb
 Un JSON local con unos 30–40 países. Cada país tiene: código ISO, nombre, alquiler, comida y transporte mensuales en euros, y una lista de 5 ciudades, cada una con nombre, latitud, longitud y sus propios importes de alquiler, comida y transporte (datos ficticios). Los contornos de los países vienen de un archivo GeoJSON público guardado en el proyecto. No hay datos de usuario ni claves; no hace falta `.env` por ahora.
 
 ## Cómo se prueba
-- España con alquiler 900 €, comida 250 € y transporte 45 € = total 1.450 €/mes.
-- Al hacer clic en España en el globo, el panel muestra esos tres importes, 1.450 € y una lista de exactamente 5 ciudades.
+- España con alquiler 900 €, comida 250 € y transporte 45 € = total 1.195 €/mes.
+- Al hacer clic en España en el globo, el panel muestra esos tres importes, 1.195 € y una lista de exactamente 5 ciudades.
 - Cada país del JSON tiene exactamente 5 ciudades (prueba automática sobre los datos).
 - Buscar «espa» selecciona España y abre su panel; buscar el nombre de una de sus ciudades abre el panel de esa ciudad.
 - Un país sin datos aparece en gris y su panel indica «sin datos».

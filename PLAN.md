@@ -47,12 +47,12 @@ El agente trabaja una fase cada vez y marca las casillas al cerrarla. Cada fase 
 **Objetivo:** colorear cada país según su coste de vida.
 
 **Tareas:**
-- [ ] Crear `costs.json` con unos 35 países (ISO, nombre, alquiler, comida, transporte; datos ilustrativos).
-- [ ] Crear la lógica `cost.ts` (total y escala de color), separada de la interfaz.
-- [ ] Colorear países por total, gris si no hay datos; añadir leyenda y aviso «Datos ilustrativos».
+- [x] Crear `costs.json` con unos 35 países (ISO, nombre, alquiler, comida, transporte; datos ilustrativos).
+- [x] Crear la lógica `cost.ts` (total y escala de color), separada de la interfaz.
+- [x] Colorear países por total, gris si no hay datos; añadir leyenda y aviso «Datos ilustrativos».
 
 **Pruebas:**
-- Unitaria: España 900 + 250 + 45 = 1.450 €.
+- Unitaria: España 900 + 250 + 45 = 1.195 €.
 - Unitaria: un país sin datos devuelve «sin datos».
 
 **Hecho cuando:** veo colores distintos, la leyenda, el aviso y países en gris.
@@ -66,7 +66,7 @@ El agente trabaja una fase cada vez y marca las casillas al cerrarla. Cada fase 
 - [ ] Mostrar «sin datos» si el país no los tiene; cerrar con X.
 
 **Pruebas:**
-- e2e: clic en España muestra 900 / 250 / 45 / 1.450 €.
+- e2e: clic en España muestra 900 / 250 / 45 / 1.195 €.
 - e2e: clic en un país gris muestra «sin datos».
 
 **Hecho cuando:** el panel se abre, se cierra y muestra los importes correctos.

@@ -31,3 +31,47 @@ body,
   font-size: 0.8rem;
   opacity: 0.7;
 }
+
+.legend {
+  position: fixed;
+  left: 16px;
+  bottom: 48px;
+  width: 220px;
+  font-size: 0.75rem;
+}
+
+.legend-bar {
+  height: 10px;
+  border-radius: 5px;
+}
+
+.legend-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  opacity: 0.85;
+}
+
+.legend-nodata {
+  margin-top: 6px;
+  opacity: 0.7;
+}
+
+.legend-nodata i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 4px;
+  border-radius: 2px;
+  background: rgba(150, 150, 150, 0.4);
+  vertical-align: middle;
+}
+
+.disclaimer {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  margin: 0;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}

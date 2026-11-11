@@ -21,7 +21,7 @@ Al seleccionar un país se muestra, por ejemplo:
 | Alquiler mensual | 900 € |
 | Comida mensual | 250 € |
 | Transporte | 45 € |
-| **Presupuesto total** | **1.450 €** |
+| **Presupuesto total** | **1.195 €** |
 
 ### Comparador de países
 Selecciona dos o tres países y compáralos lado a lado, con tabla y gráficos.
@@ -31,7 +31,7 @@ Selecciona dos o tres países y compáralos lado a lado, con tabla y gráficos.
 | Alquiler | 900 € | 750 € | 350 € |
 | Comida | 250 € | 280 € | 180 € |
 | Transporte | 45 € | 80 € | 35 € |
-| **Total** | **1.450 €** | **1.600 €** | **850 €** |
+| **Total** | **1.195 €** | **1.110 €** | **565 €** |
 
 *(Ejemplo ficticio.)*
 

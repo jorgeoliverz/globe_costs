@@ -1,15 +1,27 @@
 import { useEffect, useRef, useState } from 'react'
 import Globe, { type GlobeMethods } from 'react-globe.gl'
 import type { Country } from './types'
+import { COSTS, costColor, costRange, findCost, totalCost } from './lib/cost'
 import { useCountries } from './useCountries'
 
-const BASE_COLOR = 'rgba(120, 190, 255, 0.18)'
+const { min, max } = costRange(COSTS)
+
+function baseColor(country: Country): string {
+  const cost = findCost(country.properties.ADM0_A3)
+  return costColor(cost ? totalCost(cost) : null, min, max)
+}
+
 const HOVER_COLOR = 'rgba(94, 234, 212, 0.65)'
 
 export default function GlobeView() {
   const globeRef = useRef<GlobeMethods | undefined>(undefined)
   const { countries } = useCountries()
+  const countriesRef = useRef<Country[]>([])
+  countriesRef.current = countries
   const [hovered, setHovered] = useState<Country | null>(null)
+  const capColor = (d: object) => (d === hovered ? HOVER_COLOR : baseColor(d as Country))
+  const capColorRef = useRef(capColor)
+  capColorRef.current = capColor
   const [size, setSize] = useState({ width: window.innerWidth, height: window.innerHeight })
 
   useEffect(() => {
@@ -39,6 +51,10 @@ export default function GlobeView() {
         screenCoords: (lat: number, lng: number) => globe.getScreenCoords(lat, lng),
         pov: () => globe.pointOfView(),
         autoRotating: () => controls.autoRotate,
+        capColor: (iso: string) => {
+          const country = countriesRef.current.find((c) => c.properties.ADM0_A3 === iso)
+          return country ? capColorRef.current(country) : null
+        },
       }
     }
   }
@@ -53,7 +69,7 @@ export default function GlobeView() {
         backgroundImageUrl="/img/night-sky.png"
         onGlobeReady={onGlobeReady}
         polygonsData={countries}
-        polygonCapColor={(d) => (d === hovered ? HOVER_COLOR : BASE_COLOR)}
+        polygonCapColor={capColor}
         polygonSideColor={() => 'rgba(0, 0, 0, 0)'}
         polygonStrokeColor={() => 'rgba(255, 255, 255, 0.35)'}
         polygonAltitude={(d) => (d === hovered ? 0.03 : 0.006)}
