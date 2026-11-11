@@ -62,8 +62,8 @@ El agente trabaja una fase cada vez y marca las casillas al cerrarla. Cada fase 
 **Objetivo:** consultar el detalle de un país.
 
 **Tareas:**
-- [ ] Clic en un país abre un panel con alquiler, comida, transporte y total.
-- [ ] Mostrar «sin datos» si el país no los tiene; cerrar con X.
+- [x] Clic en un país abre un panel con alquiler, comida, transporte y total.
+- [x] Mostrar «sin datos» si el país no los tiene; cerrar con X.
 
 **Pruebas:**
 - e2e: clic en España muestra 900 / 250 / 45 / 1.195 €.

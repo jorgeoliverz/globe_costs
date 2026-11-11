@@ -75,3 +75,62 @@ body,
   font-size: 0.75rem;
   opacity: 0.7;
 }
+
+.panel {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 280px;
+  box-sizing: border-box;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: rgba(10, 18, 38, 0.88);
+  border: 1px solid rgba(94, 234, 212, 0.35);
+}
+
+.panel h2 {
+  margin: 0 28px 12px 0;
+  font-size: 1.25rem;
+}
+
+.panel p {
+  margin: 0;
+  opacity: 0.75;
+}
+
+.panel dl {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px 12px;
+  margin: 0;
+}
+
+.panel dt,
+.panel dd {
+  margin: 0;
+}
+
+.panel dd {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.panel .total {
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-weight: 700;
+  color: #5eead4;
+}
+
+.panel-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}

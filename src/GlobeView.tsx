@@ -13,13 +13,18 @@ function baseColor(country: Country): string {
 
 const HOVER_COLOR = 'rgba(94, 234, 212, 0.65)'
 
-export default function GlobeView() {
+interface Props {
+  selected: Country | null
+  onSelect: (country: Country | null) => void
+}
+
+export default function GlobeView({ selected, onSelect }: Props) {
   const globeRef = useRef<GlobeMethods | undefined>(undefined)
   const { countries } = useCountries()
   const countriesRef = useRef<Country[]>([])
   countriesRef.current = countries
   const [hovered, setHovered] = useState<Country | null>(null)
-  const capColor = (d: object) => (d === hovered ? HOVER_COLOR : baseColor(d as Country))
+  const capColor = (d: object) => (d === hovered || d === selected ? HOVER_COLOR : baseColor(d as Country))
   const capColorRef = useRef(capColor)
   capColorRef.current = capColor
   const [size, setSize] = useState({ width: window.innerWidth, height: window.innerHeight })
@@ -72,9 +77,11 @@ export default function GlobeView() {
         polygonCapColor={capColor}
         polygonSideColor={() => 'rgba(0, 0, 0, 0)'}
         polygonStrokeColor={() => 'rgba(255, 255, 255, 0.35)'}
-        polygonAltitude={(d) => (d === hovered ? 0.03 : 0.006)}
+        polygonAltitude={(d) => (d === hovered || d === selected ? 0.03 : 0.006)}
         polygonLabel={(d) => (d as Country).properties.NAME}
         onPolygonHover={(d) => setHovered((d as Country | null) ?? null)}
+        onPolygonClick={(d) => onSelect(d as Country)}
+        onGlobeClick={() => onSelect(null)}
       />
     </div>
   )
