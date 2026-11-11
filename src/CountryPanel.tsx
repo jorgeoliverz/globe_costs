@@ -18,7 +18,7 @@ export default function CountryPanel({ country, onClose, onSelectCity }: Props) 
 
   return (
     <PanelShell testId="country-panel" label="Detalle del país" onClose={onClose}>
-      <h2 className="mb-3 mr-7 mt-0 text-xl font-bold">{cost?.name ?? country.properties.NAME}</h2>
+      <h2 className="mb-3 mr-7 mt-0 font-display text-xl font-bold">{cost?.name ?? country.properties.NAME}</h2>
       {cost ? <CostList cost={cost} /> : <p className="m-0 opacity-75">Sin datos para este país.</p>}
       {cities.length > 0 && (
         <>

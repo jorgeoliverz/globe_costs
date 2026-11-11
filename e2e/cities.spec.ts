@@ -1,25 +1,8 @@
-import { expect, test, type Page } from '@playwright/test'
-
-type Clg = {
-  focus: (lat: number, lng: number) => void
-  screenCoords: (lat: number, lng: number) => { x: number; y: number }
-}
-
-async function clickAt(page: Page, lat: number, lng: number) {
-  await page.evaluate(([a, b]) => (window as unknown as { __clg: Clg }).__clg.focus(a, b), [lat, lng])
-  await page.waitForTimeout(500)
-  const pos = await page.evaluate(
-    ([a, b]) => (window as unknown as { __clg: Clg }).__clg.screenCoords(a, b),
-    [lat, lng],
-  )
-  await page.mouse.move(pos.x - 4, pos.y - 4)
-  await page.mouse.move(pos.x, pos.y, { steps: 5 })
-  await page.waitForTimeout(300) // deja que el globo detecte el objeto bajo el cursor
-  await page.mouse.click(pos.x, pos.y)
-}
+import { expect, test } from '@playwright/test'
+import { clickAt, openApp } from './helpers'
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/')
+  await openApp(page)
   await page.waitForFunction(() => '__clg' in window)
 })
 

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import Globe, { type GlobeMethods } from 'react-globe.gl'
 import type { Country } from './types'
 import { allCities, type City } from './lib/cities'
+import { prefersReducedMotion } from './lib/motion'
 import { COSTS, costColor, costRange, findCost, totalCost } from './lib/cost'
 
 const { min, max } = costRange(COSTS)
@@ -18,6 +19,10 @@ const HOVER_COLOR = 'rgba(94, 234, 212, 0.65)'
 // Tras soltar el globo, espera a que acabe la inercia antes de volver a girar.
 const RESUME_DELAY_MS = 1500
 const FOCUS_ALTITUDE = 1.5
+// Portada: la cámara empieza lejos y se acerca hasta la altitud normal al despegar el cohete.
+const INTRO_ALTITUDE = 6.5
+const DEFAULT_ALTITUDE = 2.5
+const LAUNCH_MS = 2200
 const FOCUS_DURATION_MS = 1000
 // En móvil el panel tapa la mitad inferior: la cámara apunta más al sur para que el destino quede arriba.
 const MOBILE_LAT_OFFSET = 14
@@ -33,13 +38,16 @@ interface Props {
   countries: Country[]
   selected: Country | null
   focusTarget: FocusTarget | null
+  intro: 'cover' | 'launching' | 'done'
   onSelect: (country: Country | null, city?: City | null) => void
 }
 
-export default function GlobeView({ countries, selected, focusTarget, onSelect }: Props) {
+export default function GlobeView({ countries, selected, focusTarget, intro, onSelect }: Props) {
   const globeRef = useRef<GlobeMethods | undefined>(undefined)
   const controlsRef = useRef<Controls | null>(null)
   const resumeTimer = useRef<number | undefined>(undefined)
+  const introRef = useRef(intro)
+  introRef.current = intro
   const selectedRef = useRef(selected)
   selectedRef.current = selected
   const countriesRef = useRef<Country[]>([])
@@ -78,6 +86,12 @@ export default function GlobeView({ countries, selected, focusTarget, onSelect }
   useEffect(() => () => window.clearTimeout(resumeTimer.current), [])
 
   useEffect(() => {
+    if (intro === 'launching') {
+      globeRef.current?.pointOfView({ altitude: DEFAULT_ALTITUDE }, LAUNCH_MS)
+    }
+  }, [intro])
+
+  useEffect(() => {
     if (!focusTarget) return
     const mobile = window.matchMedia('(max-width: 767px)').matches
     const lat = mobile ? Math.max(-85, focusTarget.lat - MOBILE_LAT_OFFSET) : focusTarget.lat
@@ -92,6 +106,9 @@ export default function GlobeView({ countries, selected, focusTarget, onSelect }
     if (!globe) return
     const controls = globe.controls()
     controlsRef.current = controls
+    if (introRef.current === 'cover' && !prefersReducedMotion()) {
+      globe.pointOfView({ altitude: INTRO_ALTITUDE }, 0)
+    }
     controls.autoRotate = true
     controls.autoRotateSpeed = 0.6
     controls.addEventListener('start', () => {

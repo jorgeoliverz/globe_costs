@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test'
+import { openApp } from './helpers'
 
 type Pov = { lat: number; lng: number; altitude: number }
 type Clg = { pov: () => Pov }
@@ -6,7 +7,7 @@ type Clg = { pov: () => Pov }
 const pov = (page: Page) => page.evaluate(() => (window as unknown as { __clg: Clg }).__clg.pov())
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/')
+  await openApp(page)
   await page.waitForFunction(() => '__clg' in window)
 })
 

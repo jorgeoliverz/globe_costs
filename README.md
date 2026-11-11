@@ -58,6 +58,7 @@ Búsqueda de países (y, más adelante, ciudades) que centra el globo en el resu
 - [x] 5 ciudades principales por país, con sus propios importes
 - [x] Buscador de países y ciudades
 - [x] Diseño adaptable a móviles
+- [x] Portada animada con cohete que despega hacia el globo
 - [ ] Comparador de 2–3 países con gráficos
 - [ ] **«¿Cuánto puedo vivir con mi sueldo?»**: el usuario introduce su salario mensual y la web muestra qué países y ciudades puede permitirse
 - [ ] Datos reales de coste de vida (fuentes estadísticas actualizadas)

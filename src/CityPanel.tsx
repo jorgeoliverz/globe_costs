@@ -21,7 +21,7 @@ export default function CityPanel({ city, countryName, onBack, onClose }: Props)
       >
         ← {countryName}
       </button>
-      <h2 className="mb-3 mr-7 mt-0 text-xl font-bold">{city.name}</h2>
+      <h2 className="mb-3 mr-7 mt-0 font-display text-xl font-bold">{city.name}</h2>
       <CostList cost={city} />
     </PanelShell>
   )

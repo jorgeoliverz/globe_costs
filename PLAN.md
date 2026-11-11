@@ -115,6 +115,24 @@ El agente trabaja una fase cada vez y marca las casillas al cerrarla. Cada fase 
 
 **Hecho cuando:** en móvil todo se usa bien y el conjunto de pruebas pasa.
 
+## Fase 8 · Portada y despegue
+
+**Objetivo:** una pantalla de inicio al cargar y un cohete que lleva hasta la vista del globo.
+
+**Tareas:**
+- [x] Instalar la fuente Geist (`@fontsource-variable/geist`) para los títulos.
+- [x] Portada con título, subtítulo con datos reales, botón «Empezar a explorar» y entrada animada una sola vez.
+- [x] Cohete SVG que despega al pulsar, cruza la pantalla en arco y aterriza en el centro, con la cámara acercándose a la vista normal.
+- [x] Buscador, leyenda, marca y paneles ocultos hasta terminar el vuelo.
+- [x] Con «reducir movimiento» se entra al instante, sin cohete.
+
+**Pruebas:**
+- Unitarias: portada, cohete, arco de la trayectoria, movimiento reducido, App.
+- e2e: la portada se ve al cargar, el cohete despega y deja la app usable, movimiento reducido, móvil sin scroll horizontal.
+- Las demás pruebas e2e pasan por un ayudante `openApp` que salta la portada.
+
+**Hecho cuando:** al recargar aparece la portada y, al pulsar el botón, el cohete llega a la vista del globo con la interfaz funcionando.
+
 ## Después (no incluido)
 
 Comparador de 2–3 países con gráficos y calculadora «¿Cuánto puedo vivir con mi sueldo?».

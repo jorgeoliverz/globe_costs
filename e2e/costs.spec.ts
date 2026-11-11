@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import { openApp } from './helpers'
 
 type Clg = { capColor: (iso: string) => string | null }
 
@@ -6,13 +7,13 @@ const colorOf = (page: import('@playwright/test').Page, iso: string) =>
   page.evaluate((i) => (window as unknown as { __clg: Clg }).__clg.capColor(i), iso)
 
 test('se ven la leyenda y el aviso de datos ilustrativos', async ({ page }) => {
-  await page.goto('/')
+  await openApp(page)
   await expect(page.getByLabel('Leyenda de coste mensual')).toBeVisible()
   await expect(page.getByText('Datos ilustrativos, no estadísticas actuales.')).toBeVisible()
 })
 
 test('los países se colorean por coste y los que no tienen datos van en gris', async ({ page }) => {
-  await page.goto('/')
+  await openApp(page)
   await page.waitForFunction(() => '__clg' in window)
   await expect.poll(() => colorOf(page, 'ESP')).not.toBeNull()
 

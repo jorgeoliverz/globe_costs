@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test'
+import { openApp } from './helpers'
 
 type Pov = { lat: number; lng: number; altitude: number }
 type Clg = { pov: () => Pov; autoRotating: () => boolean }
@@ -12,7 +13,7 @@ test('el globo se dibuja y no hay errores', async ({ page }) => {
   page.on('console', (m) => m.type() === 'error' && errors.push(m.text()))
   page.on('pageerror', (e) => errors.push(e.message))
 
-  await page.goto('/')
+  await openApp(page)
 
   const canvas = page.getByTestId('globe').locator('canvas')
   await expect(canvas).toBeVisible()
@@ -23,7 +24,7 @@ test('el globo se dibuja y no hay errores', async ({ page }) => {
 })
 
 test('el globo gira solo, se para al tocarlo y vuelve a girar al soltarlo', async ({ page }) => {
-  await page.goto('/')
+  await openApp(page)
   await page.waitForFunction(() => '__clg' in window)
   const canvas = page.getByTestId('globe').locator('canvas')
   await expect(canvas).toBeVisible()

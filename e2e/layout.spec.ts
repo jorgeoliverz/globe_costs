@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test'
+import { openApp } from './helpers'
 
 async function openSpain(page: Page) {
   await page.getByRole('combobox', { name: 'Buscar país o ciudad' }).fill('espa')
@@ -10,7 +11,7 @@ test.describe('móvil (390×844)', () => {
   test.use({ viewport: { width: 390, height: 844 } })
 
   test('sin scroll horizontal y con buscador y marca sin solaparse', async ({ page }) => {
-    await page.goto('/')
+    await openApp(page)
     await expect(page.getByRole('combobox')).toBeVisible()
 
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)
@@ -24,7 +25,7 @@ test.describe('móvil (390×844)', () => {
   })
 
   test('el panel es una hoja inferior a todo el ancho y se cierra con la X', async ({ page }) => {
-    await page.goto('/')
+    await openApp(page)
     await page.waitForFunction(() => '__clg' in window)
     await openSpain(page)
     const panel = page.getByTestId('country-panel')
@@ -59,7 +60,7 @@ test.describe('escritorio (1280×720)', () => {
   test.use({ viewport: { width: 1280, height: 720 } })
 
   test('el panel es una tarjeta de 280 px a la derecha', async ({ page }) => {
-    await page.goto('/')
+    await openApp(page)
     await openSpain(page)
     const box = (await page.getByTestId('country-panel').boundingBox())!
     expect(box.width).toBeCloseTo(280, 0)

@@ -17,6 +17,7 @@ Primer prototipo:
 - Buscador de países y ciudades que selecciona el resultado y centra el globo en él.
 - Países sin datos en gris, y aviso visible de «Datos ilustrativos».
 - Diseño adaptable a móviles.
+- Portada al cargar la página, con botón «Empezar a explorar» y un cohete que vuela hasta la vista del globo. Respeta «reducir movimiento».
 
 Fases posteriores (aún no): comparador de 2–3 países con gráficos y calculadora «¿Cuánto puedo vivir con mi sueldo?».
 
