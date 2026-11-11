@@ -19,7 +19,10 @@ Primer prototipo:
 - Diseño adaptable a móviles.
 - Portada al cargar la página, con botón «Empezar a explorar» y un cohete que vuela hasta la vista del globo. Respeta «reducir movimiento».
 
-Fases posteriores (aún no): comparador de 2–3 países con gráficos y calculadora «¿Cuánto puedo vivir con mi sueldo?».
+- Sueldo medio de cada país en su panel.
+- Calculadora «¿Cuánto puedo vivir con mi sueldo?»: con tu sueldo neto mensual dice cuánto te sobra en cada país y ciudad, y puede colorear el globo por ello.
+
+Fases posteriores (aún no): comparador de 2–3 países con gráficos.
 
 ## Fuera de alcance
 - Más de 5 ciudades por país.
@@ -33,7 +36,7 @@ Se ejecuta en local, en el navegador. Vite + React + TypeScript, Tailwind CSS y 
 Cómo se arrancará: `npm install` y `npm run dev` (se abre en localhost). Pruebas con `npm test` y `npm run e2e`.
 
 ## Datos y claves
-Un JSON local con unos 30–40 países. Cada país tiene: código ISO, nombre, alquiler, comida y transporte mensuales en euros, y una lista de 5 ciudades, cada una con nombre, latitud, longitud y sus propios importes de alquiler, comida y transporte (datos ficticios). Los contornos de los países vienen de un archivo GeoJSON público guardado en el proyecto. No hay datos de usuario ni claves; no hace falta `.env` por ahora.
+Un JSON local con unos 30–40 países. Cada país tiene: código ISO, nombre, alquiler, comida, transporte y sueldo neto medio mensuales en euros, y una lista de 5 ciudades, cada una con nombre, latitud, longitud y sus propios importes de alquiler, comida y transporte (datos ficticios). Los contornos de los países vienen de un archivo GeoJSON público guardado en el proyecto. No hay datos de usuario ni claves; no hace falta `.env` por ahora.
 
 ## Cómo se prueba
 - España con alquiler 900 €, comida 250 € y transporte 45 € = total 1.195 €/mes.

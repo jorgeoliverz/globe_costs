@@ -3,13 +3,16 @@ import Globe, { type GlobeMethods } from 'react-globe.gl'
 import type { Country } from './types'
 import { allCities, type City } from './lib/cities'
 import { prefersReducedMotion } from './lib/motion'
+import { leftColor } from './lib/affordability'
 import { COSTS, costColor, costRange, findCost, totalCost } from './lib/cost'
 
 const { min, max } = costRange(COSTS)
 
-function baseColor(country: Country): string {
+/** Color por coste, o por lo que te sobra si `salary` viene informado. */
+function baseColor(country: Country, salary: number | null): string {
   const cost = findCost(country.properties.ADM0_A3)
-  return costColor(cost ? totalCost(cost) : null, min, max)
+  if (!cost) return costColor(null, min, max)
+  return salary ? leftColor(salary, totalCost(cost)) : costColor(totalCost(cost), min, max)
 }
 
 const CITIES = allCities()
@@ -39,10 +42,12 @@ interface Props {
   selected: Country | null
   focusTarget: FocusTarget | null
   intro: 'cover' | 'launching' | 'done'
+  /** Sueldo con el que colorear (modo «Mi sueldo»); null colorea por coste. */
+  salary: number | null
   onSelect: (country: Country | null, city?: City | null) => void
 }
 
-export default function GlobeView({ countries, selected, focusTarget, intro, onSelect }: Props) {
+export default function GlobeView({ countries, selected, focusTarget, intro, salary, onSelect }: Props) {
   const globeRef = useRef<GlobeMethods | undefined>(undefined)
   const controlsRef = useRef<Controls | null>(null)
   const resumeTimer = useRef<number | undefined>(undefined)
@@ -53,7 +58,7 @@ export default function GlobeView({ countries, selected, focusTarget, intro, onS
   const countriesRef = useRef<Country[]>([])
   countriesRef.current = countries
   const [hovered, setHovered] = useState<Country | null>(null)
-  const capColor = (d: object) => (d === hovered || d === selected ? HOVER_COLOR : baseColor(d as Country))
+  const capColor = (d: object) => (d === hovered || d === selected ? HOVER_COLOR : baseColor(d as Country, salary))
   const capColorRef = useRef(capColor)
   capColorRef.current = capColor
   const [size, setSize] = useState({ width: window.innerWidth, height: window.innerHeight })
@@ -158,7 +163,10 @@ export default function GlobeView({ countries, selected, focusTarget, intro, onS
         pointsData={CITIES}
         pointLat="lat"
         pointLng="lng"
-        pointColor={(d) => costColor(totalCost(d as City), min, max)}
+        pointColor={(d) => {
+          const total = totalCost(d as City)
+          return salary ? leftColor(salary, total) : costColor(total, min, max)
+        }}
         pointAltitude={0.025}
         pointRadius={0.7}
         pointLabel={(d) => (d as City).name}

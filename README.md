@@ -60,7 +60,8 @@ Búsqueda de países (y, más adelante, ciudades) que centra el globo en el resu
 - [x] Diseño adaptable a móviles
 - [x] Portada animada con cohete que despega hacia el globo
 - [ ] Comparador de 2–3 países con gráficos
-- [ ] **«¿Cuánto puedo vivir con mi sueldo?»**: el usuario introduce su salario mensual y la web muestra qué países y ciudades puede permitirse
+- [x] **«¿Cuánto puedo vivir con mi sueldo?»**: el usuario introduce su salario mensual y la web muestra cuánto le sobra en cada país y ciudad
+- [x] Sueldo medio de cada país
 - [ ] Datos reales de coste de vida (fuentes estadísticas actualizadas)
 
 ## Ejecución

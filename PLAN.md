@@ -133,6 +133,23 @@ El agente trabaja una fase cada vez y marca las casillas al cerrarla. Cada fase 
 
 **Hecho cuando:** al recargar aparece la portada y, al pulsar el botón, el cohete llega a la vista del globo con la interfaz funcionando.
 
+## Fase 9 · Sueldos y calculadora
+
+**Objetivo:** mostrar el sueldo medio de cada país y calcular cuánto te sobra con tu sueldo.
+
+**Tareas:**
+- [x] Añadir `salary` (sueldo neto medio mensual, ilustrativo) a los 35 países.
+- [x] Lógica `affordability.ts`: lo que sobra, ranking de países y escala de color.
+- [x] Panel de país con «Sueldo medio» y «Sobra de media».
+- [x] Calculadora: sueldo, país, resultado «Te sobran / Te faltan», 5 ciudades y ranking de 10 países.
+- [x] Interruptor «Coste / Mi sueldo» que colorea el globo y cambia la leyenda.
+
+**Pruebas:**
+- Unitarias: 2.000 € en España = +805 €; 500 € = −695 €; ranking y color.
+- e2e: calculadora, ranking, colores del globo, interruptor y móvil.
+
+**Hecho cuando:** escribo mi sueldo y el globo se tiñe según lo que me sobra en cada país.
+
 ## Después (no incluido)
 
-Comparador de 2–3 países con gráficos y calculadora «¿Cuánto puedo vivir con mi sueldo?».
+Comparador de 2–3 países con gráficos.

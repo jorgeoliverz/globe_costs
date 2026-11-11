@@ -6,6 +6,8 @@ export interface CountryCost {
   rent: number
   food: number
   transport: number
+  /** Sueldo neto medio mensual en euros (dato ilustrativo). */
+  salary: number
 }
 
 export const COSTS: CountryCost[] = costsData

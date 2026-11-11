@@ -43,3 +43,24 @@ test('lista las 5 ciudades de España y avisa al elegir una', () => {
   fireEvent.click(screen.getByRole('button', { name: /Madrid/ }))
   expect(onSelectCity).toHaveBeenCalledWith(expect.objectContaining({ name: 'Madrid', iso: 'ESP' }))
 })
+
+test('muestra el sueldo medio de España y cuánto sobra de media (1.900 − 1.195 = 705 €)', () => {
+  render(<CountryPanel country={country('ESP', 'Spain')} onClose={noop} onSelectCity={noop} />)
+  expect(norm(screen.getByText('Sueldo medio').nextElementSibling!.textContent)).toBe('1.900 €')
+  expect(norm(screen.getByText('Sobra de media').nextElementSibling!.textContent)).toBe('705 €')
+  expect(screen.queryByText('Con tu sueldo')).toBeNull()
+})
+
+test('con sueldo del usuario añade «Con tu sueldo: te sobran / te faltan»', () => {
+  const { rerender } = render(
+    <CountryPanel country={country('ESP', 'Spain')} onClose={noop} onSelectCity={noop} salary={2000} />,
+  )
+  expect(norm(screen.getByText('Con tu sueldo').nextElementSibling!.textContent)).toBe('te sobran 805 €')
+  rerender(<CountryPanel country={country('ESP', 'Spain')} onClose={noop} onSelectCity={noop} salary={500} />)
+  expect(norm(screen.getByText('Con tu sueldo').nextElementSibling!.textContent)).toBe('te faltan 695 €')
+})
+
+test('un país sin datos no muestra sueldos', () => {
+  render(<CountryPanel country={country('RUS', 'Russia')} onClose={noop} onSelectCity={noop} salary={2000} />)
+  expect(screen.queryByText('Sueldo medio')).toBeNull()
+})
