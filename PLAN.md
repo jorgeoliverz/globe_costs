@@ -34,8 +34,8 @@ El agente trabaja una fase cada vez y marca las casillas al cerrarla. Cada fase 
 **Objetivo:** ver los países y resaltar el que está bajo el cursor.
 
 **Tareas:**
-- [ ] Guardar un GeoJSON de países en `public/`.
-- [ ] Dibujar los contornos y resaltar el país bajo el cursor.
+- [x] Guardar un GeoJSON de países en `public/`.
+- [x] Dibujar los contornos y resaltar el país bajo el cursor.
 
 **Pruebas:**
 - e2e: el GeoJSON carga sin error.
