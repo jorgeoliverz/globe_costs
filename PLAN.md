@@ -21,8 +21,8 @@ El agente trabaja una fase cada vez y marca las casillas al cerrarla. Cada fase 
 **Objetivo:** ver la Tierra en 3D y poder moverla. Es la fase más pequeña.
 
 **Tareas:**
-- [ ] Instalar solo `react-globe.gl` (avisando antes).
-- [ ] Mostrar el globo a pantalla completa sobre fondo oscuro, con giro y zoom con el ratón.
+- [x] Instalar solo `react-globe.gl` (avisando antes).
+- [x] Mostrar el globo a pantalla completa sobre fondo oscuro, con giro y zoom con el ratón.
 
 **Pruebas:**
 - e2e: existe el canvas del globo y no hay errores en consola.
