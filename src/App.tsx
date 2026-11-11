@@ -36,13 +36,15 @@ export default function App() {
   return (
     <main>
       <GlobeView countries={countries} selected={selected} focusTarget={focusTarget} onSelect={select} />
-      <header className="brand">
-        <h1>CLG</h1>
-        <p>Cost of Living Globe</p>
+      <header className="pointer-events-none fixed left-4 top-3 md:top-4">
+        <h1 className="m-0 text-xl font-bold md:text-2xl">CLG</h1>
+        <p className="m-0 font-mono text-[10px] uppercase tracking-wider opacity-70">Cost of Living Globe</p>
       </header>
       <SearchBox countries={countries} onPick={pick} />
       <Legend />
-      <p className="disclaimer">Datos ilustrativos, no estadísticas actuales.</p>
+      <p className="fixed inset-x-0 bottom-0 z-10 m-0 bg-black/50 px-4 py-1.5 text-center font-mono text-[10px] uppercase tracking-wider opacity-80 md:inset-x-auto md:bottom-4 md:left-4 md:bg-transparent md:p-0 md:text-left">
+        Datos ilustrativos, no estadísticas actuales.
+      </p>
       {selected && city && (
         <CityPanel
           city={city}

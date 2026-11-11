@@ -1,3 +1,5 @@
+import CostList from './CostList'
+import PanelShell from './PanelShell'
 import type { Country } from './types'
 import { citiesOf, type City } from './lib/cities'
 import { findCost, formatEuro, totalCost } from './lib/cost'
@@ -15,32 +17,21 @@ export default function CountryPanel({ country, onClose, onSelectCity }: Props) 
   useEscape(onClose)
 
   return (
-    <aside className="panel" data-testid="country-panel" aria-label="Detalle del país">
-      <button className="panel-close" onClick={onClose} aria-label="Cerrar panel">
-        ×
-      </button>
-      <h2>{cost?.name ?? country.properties.NAME}</h2>
-      {cost ? (
-        <dl>
-          <dt>Alquiler mensual</dt>
-          <dd>{formatEuro(cost.rent)}</dd>
-          <dt>Comida mensual</dt>
-          <dd>{formatEuro(cost.food)}</dd>
-          <dt>Transporte</dt>
-          <dd>{formatEuro(cost.transport)}</dd>
-          <dt className="total">Presupuesto total</dt>
-          <dd className="total">{formatEuro(totalCost(cost))}</dd>
-        </dl>
-      ) : (
-        <p>Sin datos para este país.</p>
-      )}
+    <PanelShell testId="country-panel" label="Detalle del país" onClose={onClose}>
+      <h2 className="mb-3 mr-7 mt-0 text-xl font-bold">{cost?.name ?? country.properties.NAME}</h2>
+      {cost ? <CostList cost={cost} /> : <p className="m-0 opacity-75">Sin datos para este país.</p>}
       {cities.length > 0 && (
         <>
-          <h3>Ciudades principales</h3>
-          <ul className="city-list">
+          <h3 className="mb-1.5 mt-4 font-mono text-xs font-normal uppercase tracking-wider opacity-70">
+            Ciudades principales
+          </h3>
+          <ul className="m-0 list-none p-0">
             {cities.map((city) => (
               <li key={city.name}>
-                <button onClick={() => onSelectCity(city)}>
+                <button
+                  className="flex w-full cursor-pointer justify-between rounded-md border-0 bg-transparent px-2 py-1.5 text-left text-inherit hover:bg-accent/15"
+                  onClick={() => onSelectCity(city)}
+                >
                   <span>{city.name}</span>
                   <span>{formatEuro(totalCost(city))}</span>
                 </button>
@@ -49,6 +40,6 @@ export default function CountryPanel({ country, onClose, onSelectCity }: Props) 
           </ul>
         </>
       )}
-    </aside>
+    </PanelShell>
   )
 }

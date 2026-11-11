@@ -19,6 +19,8 @@ const HOVER_COLOR = 'rgba(94, 234, 212, 0.65)'
 const RESUME_DELAY_MS = 1500
 const FOCUS_ALTITUDE = 1.5
 const FOCUS_DURATION_MS = 1000
+// En móvil el panel tapa la mitad inferior: la cámara apunta más al sur para que el destino quede arriba.
+const MOBILE_LAT_OFFSET = 14
 
 type Controls = ReturnType<GlobeMethods['controls']>
 
@@ -77,8 +79,10 @@ export default function GlobeView({ countries, selected, focusTarget, onSelect }
 
   useEffect(() => {
     if (!focusTarget) return
+    const mobile = window.matchMedia('(max-width: 767px)').matches
+    const lat = mobile ? Math.max(-85, focusTarget.lat - MOBILE_LAT_OFFSET) : focusTarget.lat
     globeRef.current?.pointOfView(
-      { lat: focusTarget.lat, lng: focusTarget.lng, altitude: FOCUS_ALTITUDE },
+      { lat, lng: focusTarget.lng, altitude: FOCUS_ALTITUDE },
       FOCUS_DURATION_MS,
     )
   }, [focusTarget])
@@ -115,13 +119,15 @@ export default function GlobeView({ countries, selected, focusTarget, onSelect }
   }
 
   return (
-    <div className="globe" data-testid="globe">
+    <div className="fixed inset-0" data-testid="globe">
       <Globe
         ref={globeRef}
         width={size.width}
         height={size.height}
         globeImageUrl="/img/earth-blue-marble.jpg"
         backgroundImageUrl="/img/night-sky.png"
+        atmosphereColor="#5eead4"
+        atmosphereAltitude={0.22}
         onGlobeReady={onGlobeReady}
         polygonsData={countries}
         polygonCapColor={capColor}

@@ -105,9 +105,9 @@ El agente trabaja una fase cada vez y marca las casillas al cerrarla. Cada fase 
 **Objetivo:** que se vea bien en el móvil y con el estilo del ejemplo.
 
 **Tareas:**
-- [ ] Instalar y configurar Tailwind CSS (avisando antes); diseño responsive con el panel como hoja inferior en móvil.
-- [ ] Estilo: fondo con estrellas, halo del globo y acento menta.
-- [ ] Actualizar el README con cómo arrancar y probar.
+- [x] Instalar y configurar Tailwind CSS (avisando antes); diseño responsive con el panel como hoja inferior en móvil.
+- [x] Estilo: fondo con estrellas, halo del globo y acento menta.
+- [x] Actualizar el README con cómo arrancar y probar.
 
 **Pruebas:**
 - e2e en ancho ~390 px: sin scroll horizontal y el panel se puede abrir y cerrar.

@@ -34,8 +34,9 @@ export default function SearchBox({ countries, onPick }: Props) {
   }
 
   return (
-    <div className="search">
+    <div className="fixed inset-x-4 top-16 z-20 md:inset-x-auto md:left-1/2 md:top-4 md:w-80 md:-translate-x-1/2">
       <input
+        className="box-border w-full rounded-xl border border-accent/35 bg-panel px-3.5 py-2.5 text-inherit outline-none focus:border-accent"
         type="search"
         role="combobox"
         aria-expanded={results.length > 0}
@@ -50,11 +51,16 @@ export default function SearchBox({ countries, onPick }: Props) {
         onKeyDown={onKeyDown}
       />
       {results.length > 0 && (
-        <ul id="search-results" role="listbox">
+        <ul
+          id="search-results"
+          role="listbox"
+          className="m-0 mt-1 list-none rounded-xl border border-accent/35 bg-panel p-1"
+        >
           {results.map((place, i) => (
             <li
               key={place.kind === 'city' ? `${place.city.iso}-${place.city.name}` : place.country.properties.ADM0_A3}
               role="option"
+              className="flex cursor-pointer justify-between gap-3 rounded-md px-2.5 py-2 aria-selected:bg-accent/20"
               aria-selected={i === active}
               onMouseEnter={() => setActive(i)}
               onMouseDown={(e) => {
@@ -63,7 +69,7 @@ export default function SearchBox({ countries, onPick }: Props) {
               }}
             >
               <span>{place.label}</span>
-              <small>{place.sub}</small>
+              <small className="opacity-65">{place.sub}</small>
             </li>
           ))}
         </ul>

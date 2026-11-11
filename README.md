@@ -48,20 +48,36 @@ Búsqueda de países (y, más adelante, ciudades) que centra el globo en el resu
 - [Three.js](https://threejs.org): gráficos y efectos 3D
 - [React](https://react.dev) + TypeScript (Vite)
 - [Tailwind CSS](https://tailwindcss.com): estilos
-- Recharts: gráficos comparativos
+- Vitest y Playwright: pruebas unitarias y de extremo a extremo
+- Recharts: gráficos comparativos (previsto para el comparador, aún sin instalar)
 
 ## Hoja de ruta
 - [x] Idea y diseño inicial
-- [ ] Prototipo: globo, selección de países y panel de estadísticas
-- [ ] Buscador y comparador de 2–3 países
+- [x] Globo 3D giratorio con países coloreados por coste de vida
+- [x] Panel de país con alquiler, comida, transporte y total
+- [x] 5 ciudades principales por país, con sus propios importes
+- [x] Buscador de países y ciudades
+- [x] Diseño adaptable a móviles
+- [ ] Comparador de 2–3 países con gráficos
 - [ ] **«¿Cuánto puedo vivir con mi sueldo?»**: el usuario introduce su salario mensual y la web muestra qué países y ciudades puede permitirse
 - [ ] Datos reales de coste de vida (fuentes estadísticas actualizadas)
-- [ ] Ciudades
 
 ## Ejecución
-Aún sin código. Cuando exista el prototipo:
+Requiere Node.js y npm.
 
 ```bash
 npm install
-npm run dev
+npx playwright install chromium   # solo la primera vez, para las pruebas e2e
+npm run dev                       # abre http://localhost:5173
 ```
+
+Calidad y pruebas:
+
+```bash
+npm run lint    # ESLint
+npm test        # pruebas unitarias (Vitest)
+npm run e2e     # pruebas de extremo a extremo (Playwright)
+npm run build   # comprobación de tipos y build de producción
+```
+
+Los datos (`src/data/costs.json` y `src/data/cities.json`) son ficticios y están pensados para sustituirse por una fuente real.
