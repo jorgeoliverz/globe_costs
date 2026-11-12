@@ -1,5 +1,6 @@
 import CostList from './CostList'
 import PanelShell from './PanelShell'
+import RealDataBlock from './RealDataBlock'
 import type { Country } from './types'
 import { citiesOf, type City } from './lib/cities'
 import { describeLeft, monthlyLeft } from './lib/affordability'
@@ -22,8 +23,9 @@ export default function CountryPanel({ country, onClose, onSelectCity, salary = 
   return (
     <PanelShell testId="country-panel" label="Detalle del país" onClose={onClose}>
       <h2 className="mb-3 mr-7 mt-0 font-display text-xl font-bold">{cost?.name ?? country.properties.NAME}</h2>
-      {cost ? <CostList cost={cost} /> : <p className="m-0 opacity-75">Sin datos para este país.</p>}
+      {cost ? <CostList cost={cost} /> : <p className="m-0 opacity-75">Sin datos ilustrativos para este país.</p>}
       {cost && <SalaryRows cost={cost} salary={salary} />}
+      <RealDataBlock iso={country.properties.ADM0_A3} />
       {cities.length > 0 && (
         <>
           <h3 className="mb-1.5 mt-4 font-mono text-xs font-normal uppercase tracking-wider opacity-70">

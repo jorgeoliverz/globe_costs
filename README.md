@@ -62,7 +62,8 @@ Búsqueda de países (y, más adelante, ciudades) que centra el globo en el resu
 - [ ] Comparador de 2–3 países con gráficos
 - [x] **«¿Cuánto puedo vivir con mi sueldo?»**: el usuario introduce su salario mensual y la web muestra cuánto le sobra en cada país y ciudad
 - [x] Sueldo medio de cada país
-- [ ] Datos reales de coste de vida (fuentes estadísticas actualizadas)
+- [x] Datos reales del Banco Mundial en el panel de país (nivel de precios, inflación, PIB per cápita en PPA)
+- [ ] Modo de color con datos reales, poder adquisitivo y desglose europeo (fases 11–13 de `PLAN.md`)
 
 ## Ejecución
 Requiere Node.js y npm.
@@ -79,7 +80,11 @@ Calidad y pruebas:
 npm run lint    # ESLint
 npm test        # pruebas unitarias (Vitest)
 npm run e2e     # pruebas de extremo a extremo (Playwright)
+npm run data:worldbank  # vuelve a descargar los datos reales (solo lectura, sin clave)
 npm run build   # comprobación de tipos y build de producción
 ```
 
 Los datos (`src/data/costs.json` y `src/data/cities.json`) son ficticios y están pensados para sustituirse por una fuente real.
+
+## Fuentes de datos
+Los importes de alquiler, comida, transporte y sueldo son **ilustrativos**. Las cifras de «Datos reales» vienen de [World Bank Open Data](https://data.worldbank.org) (licencia [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)): inflación (`FP.CPI.TOTL.ZG`), PIB per cápita en PPA (`NY.GDP.PCAP.PP.CD`) y nivel de precios, calculado como factor PPA del consumo (`PA.NUS.PRVT.PP`) ÷ tipo de cambio oficial (`PA.NUS.FCRF`) × 100 (EE. UU. = 100). Se descargan con `scripts/fetch-worldbank.mjs` y se guardan en `src/data/worldbank.json`; la app nunca llama a la API.

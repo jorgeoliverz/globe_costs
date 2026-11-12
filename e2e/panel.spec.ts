@@ -22,6 +22,28 @@ test('clic en un país sin datos (Rusia) muestra "Sin datos"', async ({ page }) 
   await expect(panel).not.toContainText('Presupuesto total')
 })
 
+test('el panel de España muestra los datos reales con año y fuente', async ({ page }) => {
+  await clickAt(page, 39.5, -2.5)
+  const real = page.getByTestId('real-data')
+  await expect(real).toBeVisible()
+  const text = (await real.innerText()).replace(/\s/g, ' ')
+  expect(text).toContain('Nivel de precios')
+  expect(text).toMatch(/Inflación anual\s*\d+,\d %/)
+  expect(text).toMatch(/PIB per cápita \(PPA\)\s*[\d.]+ \$ · 20\d\d/)
+  expect(text).toContain('Fuente: World Bank Open Data (CC BY 4.0)')
+})
+
+test('Rusia, sin datos ilustrativos, muestra sus datos reales', async ({ page }) => {
+  await clickAt(page, 60, 90)
+  await expect(page.getByTestId('real-data')).toContainText('Nivel de precios')
+})
+
+test('Cuba, que el Banco Mundial no incluye, indica que no hay datos reales', async ({ page }) => {
+  await clickAt(page, 21.7, -79.5)
+  await expect(page.getByTestId('country-panel')).toContainText('Cuba')
+  await expect(page.getByTestId('real-data')).toContainText('Sin datos reales para este país.')
+})
+
 test('la X cierra el panel', async ({ page }) => {
   await clickAt(page, 39.5, -2.5)
   await expect(page.getByTestId('country-panel')).toBeVisible()

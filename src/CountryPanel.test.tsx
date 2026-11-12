@@ -27,6 +27,17 @@ test('un país sin datos muestra su nombre y "Sin datos", sin cifras ni ciudades
   expect(screen.queryByText('Ciudades principales')).toBeNull()
 })
 
+test('un país sin datos ilustrativos pero con datos reales (Rusia) muestra solo el bloque real', () => {
+  render(<CountryPanel country={country('RUS', 'Russia')} onClose={noop} onSelectCity={noop} />)
+  expect(screen.getByText('Sin datos ilustrativos para este país.')).toBeTruthy()
+  expect(screen.getByTestId('real-data').textContent).toContain('Nivel de precios')
+})
+
+test('el panel de España incluye el bloque de datos reales', () => {
+  render(<CountryPanel country={country('ESP', 'Spain')} onClose={noop} onSelectCity={noop} />)
+  expect(screen.getByTestId('real-data').textContent).toContain('Inflación anual')
+})
+
 test('la X y Escape cierran el panel', () => {
   const onClose = vi.fn()
   render(<CountryPanel country={country('ESP', 'Spain')} onClose={onClose} onSelectCity={noop} />)

@@ -150,6 +150,70 @@ El agente trabaja una fase cada vez y marca las casillas al cerrarla. Cada fase 
 
 **Hecho cuando:** escribo mi sueldo y el globo se tiñe según lo que me sobra en cada país.
 
+## Fase 10 · Datos reales del Banco Mundial
+
+**Objetivo:** tener cifras reales y citables por país, sin llamar a ninguna API desde el navegador.
+
+**Selección de fuentes:** World Bank API (abierta, sin clave, CC BY 4.0, ~190 países). Indicadores: nivel de precios respecto a EE. UU. calculado como `PA.NUS.PRVT.PP` (PPA del consumo) ÷ `PA.NUS.FCRF` (tipo de cambio oficial) × 100, porque `PA.NUS.PPPC.RF` ya no existe en la API; `FP.CPI.TOTL.ZG` (inflación anual), `NY.GDP.PCAP.PP.CD` (PIB per cápita en PPA). Descartadas por ahora: Numbeo (de pago), OECD e IMF (se solapan), Big Mac Index (pocos países).
+
+**Tareas:**
+- [x] Script `scripts/fetch-worldbank.mjs` (solo `fetch` de Node, sin dependencias) que descarga el último año disponible de cada indicador.
+- [x] Guardar el resultado como `src/data/worldbank.json` (ISO, valor y año por indicador) y subirlo al repo; la app nunca llama a la API.
+- [x] Lógica `realData.ts` para leer esos datos, separada de la interfaz.
+- [x] Panel de país con bloque «Datos reales (Banco Mundial)»: nivel de precios, inflación, PIB per cápita en PPA y año del dato.
+- [x] Mantener el aviso «Datos ilustrativos» para alquiler, comida, transporte y sueldo, y etiquetar claramente qué es real y qué no.
+- [x] Añadir atribución a la fuente en el README y en la app.
+
+**Pruebas:**
+- Unitarias: el script transforma una respuesta simulada (sin red); `realData.ts` devuelve «sin datos» si falta un país o un indicador y traduce los códigos del GeoJSON que difieren (KOS, SDS, PSX).
+- e2e: el panel de un país con datos muestra el bloque y el año; Cuba (sin datos del Banco Mundial) lo indica.
+
+**Hecho cuando:** hago clic en un país y veo sus cifras reales con año y fuente.
+
+## Fase 11 · Modo de color «Nivel de precios»
+
+**Objetivo:** colorear el globo con datos reales, de modo que se vean muchos más países que con los 35 ilustrativos.
+
+**Tareas:**
+- [ ] Tercer modo en el interruptor: «Coste / Mi sueldo / Precios reales».
+- [ ] Escala de color y leyenda propias para el nivel de precios (EE. UU. = 100).
+- [ ] Países sin dato real en gris.
+
+**Pruebas:**
+- Unitarias: escala de color por nivel de precios y caso sin datos.
+- e2e: el interruptor cambia colores y leyenda; un país fuera de los 35 ilustrativos aparece coloreado.
+
+**Hecho cuando:** el globo se tiñe con más de 150 países según su nivel de precios real.
+
+## Fase 12 · Poder adquisitivo real en la calculadora
+
+**Objetivo:** que la calculadora use el nivel de precios real para comparar lo que rinde un sueldo.
+
+**Tareas:**
+- [ ] Lógica `purchasingPower.ts`: sueldo equivalente en otro país según nivel de precios real.
+- [ ] Calculadora: línea «Tu sueldo equivale a X € en <país>» para los países con dato real.
+- [ ] Ranking de países por poder adquisitivo con datos reales.
+
+**Pruebas:**
+- Unitarias: conversión entre dos países con niveles de precios conocidos; país sin dato.
+- e2e: la calculadora muestra el equivalente y el ranking.
+
+**Hecho cuando:** escribo mi sueldo y veo cuánto rinde en cada país según precios reales.
+
+## Fase 13 · Europa por categorías con Eurostat (opcional)
+
+**Objetivo:** desglose real por categorías (alimentación, vivienda, transporte, restaurantes) para países europeos.
+
+**Tareas:**
+- [ ] Script `scripts/fetch-eurostat.mjs` con el dataset `prc_ppp_ind` (misma idea: descarga única, JSON local).
+- [ ] Mostrar el desglose en el panel de los países europeos con dato.
+
+**Pruebas:**
+- Unitarias: transformación de una respuesta simulada y países sin dato.
+- e2e: el panel de España muestra el desglose por categorías.
+
+**Hecho cuando:** un país europeo muestra su desglose real con año y fuente.
+
 ## Después (no incluido)
 
 Comparador de 2–3 países con gráficos.
